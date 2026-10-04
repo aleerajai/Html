@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ali Rajai - Personal Portfolio Website for AI Lab Semester Project">
+  <meta name="keywords" content="Ali Rajai, web developer, portfolio website, student, Indus University">
+  <meta name="author" content="Ali Rajai">
+  <meta property="og:title" content="Ali Rajai - Portfolio">
+  <meta property="og:description" content="Software Engineering student portfolio.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/alirajai.png">
+  <meta name="theme-color" content="#0d0d10">
+  <title>Ali Rajai - Portfolio</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="preload" href="assets/fonts/outfit-latin-v15.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/playfair-display-latin-v40.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#home" aria-label="Ali Rajai home">
+      <img class="brand__logo" src="assets/images/alirajai-96.webp" alt="Ali Rajai Monogram" width="96" height="96" decoding="async">
+      <strong>Ali Rajai</strong>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero section">
+      <div class="hero__content reveal">
+        <p class="eyebrow">AI Lab - Semester Project</p>
+        <h1>Hi, I'm Ali Rajai.</h1>
+        <p class="hero__text">A Software Engineering student at <strong>Indus University</strong>, with hands-on experience in WordPress, Shopify, and Odoo development, along with proficiency in HTML, CSS, and JavaScript.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary magnetic" href="#projects">View Projects</a>
+          <a class="btn btn--ghost magnetic" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero__visual reveal">
+        <div class="device-card tilt-card" style="padding: 0.8rem;">
+          <div class="hero-image-wrapper" style="width: 100%; height: 32rem; border-radius: 1.35rem; overflow: hidden;">
+            <img src="assets/images/alirajai-495.webp" srcset="assets/images/alirajai-320.webp 320w, assets/images/alirajai-495.webp 495w" sizes="(max-width: 820px) calc(100vw - 60px), (max-width: 1152px) calc(47vw - 62px), 476px" width="495" height="495" fetchpriority="high" decoding="async" alt="Ali Rajai Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="about__panel reveal">
+        <p class="eyebrow">About Me</p>
+        <h2>Education & Interests</h2>
+        <p>I am <strong>Ali Rajai</strong>, currently pursuing my Bachelor's degree in Software Engineering at <strong>Indus University</strong>. I have hands-on experience with WordPress, Shopify, and Odoo development, and I am proficient in front-end technologies like HTML, CSS, and JavaScript.</p>
+        <h3 style="margin-top: 1.5rem; color: var(--gold);">Interests</h3>
+        <p>I have a keen interest in Web Development, E-Commerce platforms, and building creative digital solutions that solve real-world problems. Currently working on my AI Lab projects under <strong>Engr. Chandar Kumar</strong>.</p>
+      </div>
+      <div class="about__stack" id="skills">
+        <h3 style="grid-column: 1 / -1; color: var(--gold); text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 0.5rem; margin-bottom: 0;">My Skills</h3>
+        <span>HTML & CSS</span><span>JavaScript</span><span>WordPress</span><span>Shopify</span><span>Odoo</span><span>Git</span>
+      </div>
+    </section>
+
+    <section class="section portfolio" id="projects">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Showcase</p>
+        <h2>Academic & Programming Projects</h2>
+      </div>
+      <div class="portfolio-track" style="position: relative;">
+        <div class="merged-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; pointer-events: none; z-index: 10; text-align: center; width: 100%;">
+          <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0; color: #fff; text-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: 'Playfair Display', serif;">Academic & Programming Projects</h2>
+        </div>
+        <article class="work-card">
+          <div class="work-card__art">
+            <img class="work-card__img" src="assets/images/project-fiverr.svg" alt="Fiverr Project" width="600" height="400" loading="lazy" decoding="async">
+          </div>
+          <p>Freelance Project</p>
+          <h3>French Client Website</h3>
+          <p style="margin-top: 0.5rem; color: var(--muted);">Developed a fully functional active website (nghrconsulting.fr) for a French client through Fiverr.</p>
+        </article>
+        <article class="work-card">
+          <div class="work-card__art">
+            <img class="work-card__img" src="assets/images/project-abasin.svg" alt="Abasin Global Website" width="600" height="400" loading="lazy" decoding="async">
+          </div>
+          <p>Web Development</p>
+          <h3>Abasin Global Website</h3>
+          <p style="margin-top: 0.5rem; color: var(--muted);">Created a complete website for Abasin Global during my role as a WordPress/Shopify developer.</p>
+        </article>
+        <article class="work-card">
+          <div class="work-card__art">
+            <img class="work-card__img" src="assets/images/project-portfolio.svg" alt="Personal Portfolio" width="600" height="400" loading="lazy" decoding="async">
+          </div>
+          <p>Web Design</p>
+          <h3>Personal Portfolio</h3>
+          <p style="margin-top: 0.5rem; color: var(--muted);">This very website, designed and developed as a semester project showcasing responsive design and custom animations.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact__card reveal">
+        <p class="eyebrow">Contact & Connect</p>
+        <h2>Build your portfolio today—showcase your skills, your creativity, and the future you are creating.</h2>
+        <div class="contact__actions">
+          <a class="btn btn--primary magnetic" href="mailto:alirajai.dev@gmail.com">Email Me</a>
+          <a class="btn btn--ghost magnetic" href="https://www.linkedin.com/in/alirajai-dev" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn--ghost magnetic" href="https://github.com/aleerajai" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn--ghost magnetic" href="https://www.instagram.com/aleerajai1/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="contact-menu">
+    <div class="contact-menu__options">
+      <a href="https://www.linkedin.com/in/alirajai-dev" target="_blank" rel="noopener" class="contact-menu__option magnetic" aria-label="LinkedIn">
+        <span class="contact-menu__icon contact-menu__icon--email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </span>
+        <span class="contact-menu__text">LinkedIn</span>
+      </a>
+      <a href="https://github.com/aleerajai" target="_blank" rel="noopener" class="contact-menu__option magnetic" aria-label="GitHub">
+        <span class="contact-menu__icon contact-menu__icon--email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </span>
+        <span class="contact-menu__text">GitHub</span>
+      </a>
+      <a href="mailto:alirajai.dev@gmail.com" class="contact-menu__option magnetic" aria-label="Email">
+        <span class="contact-menu__icon contact-menu__icon--email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+        </span>
+        <span class="contact-menu__text">Email</span>
+      </a>
+    </div>
+    <button class="whatsapp-float magnetic" aria-label="Contact Options" aria-expanded="false" style="background: var(--panel); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; color: var(--gold);">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <footer class="site-footer" style="justify-content: center; text-align: center;">
+    <p>© 2026 Ali Rajai. Developed for AI Lab Project.</p>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

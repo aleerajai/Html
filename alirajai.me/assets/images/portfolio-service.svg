@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4dfaa" />
+      <stop offset="50%" stop-color="#d4af67" />
+      <stop offset="100%" stop-color="#a86443" />
+    </linearGradient>
+    <linearGradient id="copper-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#241915" />
+      <stop offset="100%" stop-color="#0d0d10" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Frame -->
+  <rect width="100%" height="100%" fill="url(#copper-gradient)" rx="16" />
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="rgba(168,100,67,0.14)" stroke-width="1" rx="12" />
+
+  <!-- Circular technical rings for conversion optimization aesthetic -->
+  <g opacity="0.2">
+    <circle cx="200" cy="200" r="140" fill="none" stroke="#a86443" stroke-width="0.75" />
+    <circle cx="200" cy="200" r="100" fill="none" stroke="#a86443" stroke-width="0.5" stroke-dasharray="3 3" />
+    <circle cx="200" cy="200" r="60" fill="none" stroke="#a86443" stroke-width="0.5" />
+  </g>
+
+  <!-- High conversion marketing UI design mockup representation -->
+  <!-- Floating Dashboard Card -->
+  <rect x="70" y="90" width="260" height="180" rx="10" fill="#151312" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+  
+  <!-- Mini Chart representation -->
+  <path d="M 90 220 L 130 180 L 170 200 L 220 140 L 260 160 L 300 110" fill="none" stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 90 220 L 130 180 L 170 200 L 220 140 L 260 160 L 300 110 L 300 230 L 90 230 Z" fill="url(#gold)" opacity="0.06" />
+
+  <!-- Dots on critical graph points -->
+  <circle cx="220" cy="140" r="4" fill="#f8f3ea" />
+  <circle cx="300" cy="110" r="4.5" fill="url(#gold)" />
+
+  <!-- Conversion Text / Metrics -->
+  <text x="90" y="130" font-family="'Outfit', sans-serif" font-size="10" font-weight="bold" fill="#aaa39b" letter-spacing="1">CONVERSION</text>
+  <text x="90" y="155" font-family="'Outfit', sans-serif" font-size="22" font-weight="bold" fill="#f8f3ea">+342%</text>
+
+  <!-- Interactive Trust Badge representation -->
+  <g transform="translate(140, 240)">
+    <rect width="120" height="36" rx="18" fill="rgba(212,175,103,0.12)" stroke="url(#gold)" stroke-width="1" />
+    <!-- Checkmark SVG integrated inline -->
+    <path d="M 16 18 L 21 23 L 30 14" fill="none" stroke="#d4af67" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="38" y="22" font-family="'Outfit', sans-serif" font-size="10" font-weight="bold" fill="#f8f3ea" letter-spacing="0.5">HIGH-TRUST FLOW</text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Definitions for luxury gold gradients -->
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4dfaa" />
+      <stop offset="50%" stop-color="#d4af67" />
+      <stop offset="100%" stop-color="#a86443" />
+    </linearGradient>
+    <linearGradient id="glow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4af67" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#d4af67" stop-opacity="0" />
+    </linearGradient>
+    <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Glowing background flare (optional, safe for vectors) -->
+  <circle cx="50" cy="50" r="30" fill="url(#glow-grad)" opacity="0.3" filter="url(#glow-filter)" />
+
+  <!-- Outer circular elegant border -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="url(#gold-grad)" stroke-width="2" opacity="0.8" />
+  
+  <!-- Dashed precise inner rings for technical luxury aesthetic -->
+  <circle cx="50" cy="50" r="38" fill="none" stroke="#d4af67" stroke-width="0.5" stroke-dasharray="2 3" opacity="0.6" />
+
+  <!-- Monogram/Logo text -->
+  <g transform="translate(50, 52)">
+    <!-- "A" Monogram Letter -->
+    <text x="-12" y="10" 
+          font-family="'Playfair Display', 'Georgia', serif" 
+          font-size="28" 
+          font-weight="bold" 
+          fill="url(#gold-grad)" 
+          text-anchor="middle"
+          letter-spacing="-1">A</text>
+    
+    <!-- "R" Monogram Letter overlapping elegantly -->
+    <text x="10" y="10" 
+          font-family="'Playfair Display', 'Georgia', serif" 
+          font-size="28" 
+          font-weight="bold" 
+          fill="#f8f3ea" 
+          text-anchor="middle"
+          letter-spacing="-1">R</text>
+
+    <!-- Small horizontal divider -->
+    <line x1="-15" y1="16" x2="15" y2="16" stroke="url(#gold-grad)" stroke-width="1.2" />
+    
+    <!-- Subtitle -->
+    <text x="0" y="24" 
+          font-family="'Outfit', 'Helvetica', sans-serif" 
+          font-size="5" 
+          font-weight="700" 
+          letter-spacing="4" 
+          fill="#aaa39b" 
+          text-anchor="middle">CREATIVE</text>
+  </g>
+</svg>
