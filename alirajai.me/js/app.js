@@ -1,14 +1,22 @@
 const header = document.querySelector("[data-header]");
+const loader = document.querySelector(".loader");
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".site-nav");
 const cursorDot = document.querySelector(".cursor-dot");
 const cursorRing = document.querySelector(".cursor-ring");
 
-const updateHeader = () => {
+window.addEventListener("load", () => {
+  if (window.gsap) {
+    gsap.to(loader, { autoAlpha: 0, duration: 0.7, delay: 0.45, ease: "power2.out" });
+    gsap.from(".hero .reveal", { y: 36, opacity: 0, duration: 0.9, stagger: 0.13, delay: 0.7, ease: "power3.out" });
+  } else {
+    loader.style.display = "none";
+  }
+});
+
+window.addEventListener("scroll", () => {
   header.classList.toggle("is-scrolled", window.scrollY > 20);
-};
-window.addEventListener("scroll", updateHeader, { passive: true });
-updateHeader();
+});
 
 navToggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("is-open");
@@ -41,26 +49,15 @@ nav.querySelectorAll("a").forEach((link) => {
   });
 });
 
-const desktopMotion = window.matchMedia("(min-width: 821px) and (prefers-reduced-motion: no-preference)");
-
-if (desktopMotion.matches && window.matchMedia("(pointer: fine)").matches) {
-  let cursorFrame = 0;
-  let cursorPosition = { clientX: 0, clientY: 0 };
-
+if (window.matchMedia("(pointer: fine)").matches) {
   window.addEventListener("mousemove", (event) => {
-    cursorPosition = { clientX: event.clientX, clientY: event.clientY };
-    if (cursorFrame) return;
-    cursorFrame = window.requestAnimationFrame(() => {
-      cursorFrame = 0;
-      if (!desktopMotion.matches) {
-        document.body.classList.remove("has-custom-cursor");
-        return;
-      }
-      document.body.classList.add("has-custom-cursor");
-      cursorDot.style.transform = `translate(${cursorPosition.clientX - 3}px, ${cursorPosition.clientY - 3}px)`;
-      cursorRing.style.transform = `translate(${cursorPosition.clientX - 17}px, ${cursorPosition.clientY - 17}px)`;
-    });
-  }, { passive: true });
+    const { clientX, clientY } = event;
+    cursorDot.style.transform = `translate(${clientX - 3}px, ${clientY - 3}px)`;
+    cursorRing.animate(
+      { transform: `translate(${clientX - 17}px, ${clientY - 17}px)` },
+      { duration: 450, fill: "forwards", easing: "cubic-bezier(.2,.8,.2,1)" }
+    );
+  });
 
   document.querySelectorAll("a, button, .magnetic").forEach((item) => {
     item.addEventListener("mouseenter", () => cursorRing.classList.add("is-active"));
@@ -69,21 +66,19 @@ if (desktopMotion.matches && window.matchMedia("(pointer: fine)").matches) {
       item.style.transform = "";
     });
     item.addEventListener("mousemove", (event) => {
-      if (!desktopMotion.matches) return;
       const rect = item.getBoundingClientRect();
-      const offsetX = event.clientX - rect.left - rect.width / 2;
-      const offsetY = event.clientY - rect.top - rect.height / 2;
-      item.style.transform = `translate(${offsetX * 0.08}px, ${offsetY * 0.08}px)`;
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      item.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
     });
   });
 
   document.querySelectorAll(".tilt-card").forEach((card) => {
     card.addEventListener("mousemove", (event) => {
-      if (!desktopMotion.matches) return;
       const rect = card.getBoundingClientRect();
-      const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
-      const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `rotateX(${offsetY * -8}deg) rotateY(${offsetX * 10}deg)`;
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `rotateX(${y * -8}deg) rotateY(${x * 10}deg)`;
     });
     card.addEventListener("mouseleave", () => {
       card.style.transform = "rotateX(0deg) rotateY(0deg)";
@@ -95,12 +90,12 @@ const bootGsap = () => {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  const mm = gsap.matchMedia();
+  let mm = gsap.matchMedia();
 
   // --- DESKTOP ANIMATIONS ONLY (min-width: 821px) ---
   // Mobile devices often struggle with complex scrub animations over backdrop-filters, 
   // so we disable all scroll-based GSAP animations on mobile for maximum performance.
-  mm.add("(min-width: 821px) and (prefers-reduced-motion: no-preference)", () => {
+  mm.add("(min-width: 821px)", () => {
     
     // 0. Existing reveal animation for generic sections
     gsap.utils.toArray(".section:not(.hero) .reveal").forEach((element) => {
@@ -152,39 +147,37 @@ const bootGsap = () => {
     );
 
     const enterCards = gsap.utils.toArray(".work-card");
-    if (enterCards.length === 3) {
-      // Left card - rises + tilts from left
-      portfolioEnterTl.fromTo(enterCards[0],
-        { y: 200, opacity: 0, rotationY: -30, rotationX: 12 },
+    enterCards.forEach((card, i) => {
+      const isLeft = i % 2 === 0;
+      portfolioEnterTl.fromTo(card,
+        { y: 180 + (i >= 2 ? 40 : 0), opacity: 0, rotationY: isLeft ? -16 : 16, rotationX: 10 },
         { y: 0,   opacity: 1, rotationY: 0,   rotationX: 0,  ease: "none", duration: 1 },
-        0.1
+        0.1 + i * 0.12
       );
-      // Center card - rises highest (most dramatic)
-      portfolioEnterTl.fromTo(enterCards[1],
-        { y: 280, opacity: 0, scale: 0.85 },
-        { y: 0,   opacity: 1, scale: 1,    ease: "none", duration: 1 },
-        0.2
-      );
-      // Right card - rises + tilts from right
-      portfolioEnterTl.fromTo(enterCards[2],
-        { y: 200, opacity: 0, rotationY: 30, rotationX: 12 },
-        { y: 0,   opacity: 1, rotationY: 0,  rotationX: 0,  ease: "none", duration: 1 },
-        0.15
-      );
-    }
-
-    // 5. Portfolio Merge Animation (Horizontal)
-    const portfolioTl = gsap.timeline({
-      scrollTrigger: { trigger: ".portfolio-track", start: "center center", end: "bottom top", scrub: 1 }
     });
-    const cards = gsap.utils.toArray(".work-card");
-    if (cards.length === 3) {
-      cards.forEach(card => portfolioTl.to(card.children, { opacity: 0, ease: "power2.inOut" }, 0));
-      portfolioTl.to(cards[0], { xPercent: 105, scale: 0.85, rotationY: -10, ease: "power2.inOut" }, 0);
-      portfolioTl.to(cards[2], { xPercent: -105, scale: 0.85, rotationY: 10, ease: "power2.inOut" }, 0);
-      portfolioTl.to(cards[1], { scale: 0.85, ease: "power2.inOut" }, 0);
-      portfolioTl.to(".merged-text", { opacity: 1, scale: 1, ease: "power2.inOut" }, 0.1);
-    }
+
+    // 5. Services Cards Stagger Entrance (guaranteed visibility)
+    gsap.fromTo(".service-card",
+      { y: 45, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.75,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".services", start: "top 85%", once: true }
+      }
+    );
+
+    // 6. Timeline Milestones Entrance
+    gsap.from(".timeline__item", {
+      x: -40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".timeline", start: "top 80%", once: true }
+    });
 
     // 6. Section Headings Horizontal Shift
     gsap.utils.toArray(".section-heading h2, .about__panel h2").forEach((heading) => {
@@ -247,31 +240,22 @@ const bootGsap = () => {
   });
 };
 
-let effectsRequested = false;
+window.addEventListener("load", bootGsap);
 
-const loadScript = (source) => new Promise((resolve, reject) => {
-  const script = document.createElement("script");
-  script.src = source;
-  script.onload = resolve;
-  script.onerror = reject;
-  document.head.append(script);
+// Copy Email to Clipboard helper
+document.querySelectorAll("[data-copy-email]").forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const email = btn.getAttribute("data-copy-email") || "alirajai.dev@gmail.com";
+    try {
+      await navigator.clipboard.writeText(email);
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<span>Copied to Clipboard! ✓</span>`;
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+      }, 2400);
+    } catch (err) {
+      window.location.href = `mailto:${email}`;
+    }
+  });
 });
-
-const loadScrollEffects = async () => {
-  if (effectsRequested || !desktopMotion.matches || window.scrollY <= 20) return;
-  effectsRequested = true;
-  try {
-    await loadScript("js/vendor/gsap-3.12.5.min.js");
-    await loadScript("js/vendor/ScrollTrigger-3.12.5.min.js");
-    bootGsap();
-  } catch {
-    document.body.classList.remove("has-custom-cursor");
-  }
-};
-
-desktopMotion.addEventListener("change", () => {
-  document.body.classList.remove("has-custom-cursor");
-  loadScrollEffects();
-});
-window.addEventListener("scroll", loadScrollEffects, { passive: true });
-loadScrollEffects();
