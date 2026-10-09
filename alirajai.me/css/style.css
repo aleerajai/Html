@@ -295,7 +295,7 @@ p { color: var(--muted); line-height: 1.6; font-size: 1.05rem; }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 .service-card {
@@ -729,7 +729,8 @@ p { color: var(--muted); line-height: 1.6; font-size: 1.05rem; }
   h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
   .eyebrow { margin-bottom: 0.45rem; }
   .services-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .metrics-strip { gap: 1.25rem; justify-content: space-between; }
+  .metrics-strip { gap: 1rem; justify-content: space-between; }
+  .metric-item--desktop { display: none !important; }
   .metric-item__num { font-size: 1.55rem; }
   .timeline { padding-left: 1.5rem; }
   .timeline__marker { left: -1.95rem; }
